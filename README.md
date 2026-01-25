@@ -88,7 +88,7 @@ def infer(file_path):
 
 ### Continued development
 
-Though, I do not know if my solution was correct but at least I was about to create a script that help to automate the infer processig despite that I do not understand the language of the giving words.
+In my first upload, I knew my solution was correct but at least I was about to create a script that help to automate the infer processig despite that I do not understand the language of the giving words. Thanks to [Amance](https://stackoverflow.com/users/17142551/amance) for correction and update tips
 
 ### Useful resources
 
@@ -102,3 +102,5 @@ Though, I do not know if my solution was correct but at least I was about to cre
 ## Acknowledgments
 
 I gave credibility to [Geeksforgeeks](https://www.geeksforgeeks.org/) for the amazing documentations and video tutorial, I also acknowlege the programmering communities for the hint and tips for creating my python infer automated script.
+
+Thanks to [Amance](https://stackoverflow.com/users/17142551/amance) for correction and update tips

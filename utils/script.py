@@ -37,26 +37,39 @@ def infer(file_path):
         if f is not None and not f.closed:
             f.close()
 
+def convert_to_string(content):
+    if content is None:
+        print("Input can not be empty")
+        return
+    if isinstance(content, set):
+        newContent = "".join("".join(data) for data in content)
+    else:
+        newContent = content
+    newContent = str(newContent)
+    print("Completed\n")
+    return newContent
+
+def remove_duplicate(content):
+    if content is None or content == "":
+        print("Input can not be empty")
+        return
+    result = ''.join(set(content))
+    print("Completed\n")
+    return result
+
 def write_to_file(content, file_path):
     try:
         print("Reading content...")
         if content is None:
-            print("Provide content is empty!")
+            print("Input is empty!")
             print("Operation cancelled!")
             return
         print("Content loaded completed.\n")
-
-        if isinstance(content, set):
-            newContent = "".join("".join(data) for data in content)
-        else:
-            newContent = content
-        
-        newContent = str(newContent)
         path = Path(file_path)
         path.parent.mkdir(parents=True, exist_ok=True)
         with open(path, 'w') as f:
             print("Writing new content to file...")
-            f.write(newContent)
+            f.write(content)
             print("File write up completed.\n")
     except Exception as e:
         print(f"An unexpected error occurred: {e}")
@@ -66,8 +79,22 @@ def write_to_file(content, file_path):
             f.close()
         print("File closed successfully.")
 
-result = infer(INPUT_FILE_PATH)
-if result:
-    write_to_file(result, OUTPUT_FILE_PATH)
-else:
-    print(result)
+def start_process():
+    try:
+        print("Loading...")
+        print("Infer...")
+        infer_result = infer(INPUT_FILE_PATH)
+        print("Infer completed\n")
+        if infer_result:
+            print("Converting to string...")
+            string_result = convert_to_string(infer_result)
+            print("Removing duplicate...")
+            unique_result = remove_duplicate(string_result)
+            print("Writing to file...")
+            write_to_file(unique_result, OUTPUT_FILE_PATH)
+        else:
+            print(infer_result)
+    except Exception as e:
+        print(f"Unexpected error occurred: {e}")
+
+start_process()
